@@ -1,0 +1,378 @@
+body {
+    background-color: #fff;
+    position: relative;
+}
+
+.nav {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 8px);
+    filter: drop-shadow(8px 8px 16px rgba(55, 57, 58, 0.12));
+}
+
+.nav__wrapper {
+    background-color: #f3f4f6;
+    padding: 0 280px;
+    border-radius: 16px;
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 0;
+}
+
+.nav__item {
+    margin-right: 32px;
+}
+
+.nav__item:last-child {
+    margin-right: 0;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: capitalize;
+}
+
+/* ТОВАРЫ */
+.category.category--first {
+    padding-top: 120px;
+}
+
+.category {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+}
+
+.category__title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    text-transform: capitalize;
+    color: #000000;
+    margin-bottom: 24px;
+}
+
+.category__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.category__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 24px;
+    margin-bottom: 40px;
+    max-width: 282px;
+}
+
+.category__item:nth-child(4n) {
+    margin-right: 0;
+}
+
+.category__img-wrapper {
+    background-color: rgba(164, 168, 172, 0.1);
+    border-radius: 16px;
+    max-width: 282px;
+    max-height: 262px;
+    margin-bottom: 16px;
+}
+
+.category__img {
+    object-fit: cover;
+}
+
+.category__date {
+    font-size: 12px;
+    line-height: 15px;
+    color: #919fab;
+    margin-bottom: 4px;
+}
+
+.category__cost {
+    font-size: 24px;
+    line-height: 29px;
+    text-transform: capitalize;
+    margin-bottom: 4px;
+}
+
+.category__name {
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: capitalize;
+    margin-bottom: 16px;
+}
+
+.category__btn {
+    display: inline-block;
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 10px 36px;
+    background-color: #1889f1;
+    border: none;
+    cursor: pointer;
+    border-radius: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* МОДАЛКА */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.64);
+}
+
+.modal--active {
+    display: block;
+}
+
+.modal__window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 534px;
+    background-color: #fff;
+}
+.modal__wrapper {
+    padding: 32px 24px;
+}
+
+.modal__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.modal__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    color: #000000;
+}
+
+.modal__form {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal__productWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal__productInfo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 32px;
+}
+
+.modal__imageWrapper {
+    width: 211px;
+    height: 200px;
+    background: rgba(164, 168, 172, 0.1);
+    border-radius: 16px;
+    margin-right: 24px;
+}
+
+.modal__img {
+    width: 211px;
+    height: 200px;
+}
+
+.modal__productTextWrapper {
+    max-width: 211px;
+    margin-right: 24px;
+}
+
+.modal__productText {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #919fab;
+    margin-bottom: 8px;
+}
+
+.modal__productName {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.modal__inputWrapper {
+    margin-right: 84px;
+}
+
+.modal__inputTable {
+    max-width: 150px;
+}
+
+.modal__input {
+    display: none;
+}
+
+.modal__fake {
+    display: inline-block;
+    flex-wrap: wrap;
+    border: 2px solid #919fab;
+    border-radius: 16px;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+    margin-right: 4px;
+    position: relative;
+}
+
+.first {
+    background-color: #fff;
+}
+
+.second {
+    background-color: #ffceb9;
+}
+
+.third {
+    background-color: #000;
+}
+
+.fourth {
+    background-color: #d9d9d9;
+}
+
+.fifth {
+    background-color: #ffc0fc;
+}
+
+.sixth {
+    background-color: #b6dcff;
+}
+
+.seventh {
+    background-color: #b9d6ab;
+}
+
+.modal__fake--active {
+    border: 2px solid #2395ff;
+}
+
+/* .modal__fake::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: #1889f1;
+    border-color: #000000;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.modal__input:checked + .modal__fake::after {
+    opacity: 1;
+} */
+
+.modal__pointerWrapper {
+    width: 211px;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__pointer {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #919fab;
+    margin-bottom: 8px;
+}
+
+.modal__priceWrapper {
+    width: 211px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__priceText {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #919fab;
+    margin-bottom: 8px;
+}
+
+.modal__price {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.modal__textareaWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__textareaHeader {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #919fab;
+    margin-bottom: 16px;
+}
+.modal__textarea {
+    width: 532px;
+    height: 100px;
+    background: #f3f4f6;
+    border-radius: 16px;
+    border-color: #fff;
+    outline: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    padding: 16px;
+    resize: none;
+}

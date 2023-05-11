@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./initialData.js" defer></script>
+        <script src="./main.js" defer></script>
+        <link rel="stylesheet" href="./reset.css" />
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet" />
+        <title>Store TestProject</title>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="nav__wrapper">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a class="nav__link" href="#laptopAnc">Ноутбуки</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#phoneAnc">Телефоны</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#tabletAnc">Планшеты</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#headphoneAnc">Наушники</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section class="category category--first" id="laptopAnc">
+            <h3 class="category__title">Ноутбуки</h3>
+            <ul class="category__list" id="laptop">
+                <!-- <li class="category__item">
+                    <div class="category__img-wrapper">
+                        <img class="category__img" src="./img/laptop.png" alt="Картинка" />
+                    </div>
+                    <p class="category__date">Среда, 3 неделя Декабря 2021 года</p>
+                    <p class="category__cost">78 990 ₽</p>
+                    <p class="category__name">Apple MacBook Air 13</p>
+                    <button class="category__btn">Купить</button>
+                </li> -->
+            </ul>
+        </section>
+        <section class="category" id="phoneAnc">
+            <h3 class="category__title">Телефоны</h3>
+            <ul class="category__list" id="phone"></ul>
+        </section>
+        <section class="category" id="tabletAnc">
+            <h3 class="category__title">Планшеты</h3>
+            <ul class="category__list" id="tablet"></ul>
+        </section>
+        <section class="category" id="headphoneAnc">
+            <h3 class="category__title">Наушники</h3>
+            <ul class="category__list" id="headphone"></ul>
+        </section>
+        <section class="modal">
+            <div class="modal__window">
+                <div class="modal__wrapper">
+                    <div class="modal__top">
+                        <p class="modal__title">Товар добавлен в корзину</p>
+                        <img src="./img/cross24.svg" alt="Закрыть" class="modal__cross" />
+                    </div>
+                    <form class="modal__form" id="modal">
+                        <div class="modal__productWrapper">
+                            <div class="modal__productInfo">
+                                <div class="modal__imageWrapper">
+                                    <img src="./img/laptop.png" alt="Картинка товара" class="modal__img" />
+                                </div>
+                                <div class="modal__productTextWrapper">
+                                    <p class="modal__productText">Наименование товара</p>
+                                    <p class="modal__productName">
+                                        13.3" Ноутбук Apple MacBook Air 13 2020 2560x1600
+                                    </p>
+                                </div>
+                                <div class="modal__inputWrapper">
+                                    <p class="modal__productText">Цвет</p>
+                                    <div class="modal__inputTable">
+                                        <label class="modal__inputStyle">
+                                            <input type="radio" class="modal__input" checked name="color" />
+                                            <span class="modal__fake first"></span>
+                                        </label>
+                                        <label class="modal__inputStyle">
+                                            <input type="radio" class="modal__input" name="color" />
+                                            <span class="modal__fake second"></span>
+                                        </label>
+                                        <label class="modal__inputStyle">
+                                            <input type="radio" class="modal__input" name="color" />
+                                            <span class="modal__fake third"></span>
+                                        </label>
+                                        <label class="modal__inputStyle">
+                                            <input type="radio" class="modal__input" name="color" />
+                                            <span class="modal__fake fourth"></span>
+                                        </label>
+                                        <label class="modal__inputStyle">
+                                            <input type="radio" class="modal__input" name="color" />
+                                            <span class="modal__fake fifth"></span>
+                                        </label>
+                                        <label class="modal__inputStyle">
+                                            <input type="radio" class="modal__input" name="color" />
+                                            <span class="modal__fake sixth"></span>
+                                        </label>
+                                        <label class="modal__inputStyle">
+                                            <input type="radio" class="modal__input" name="color" />
+                                            <span class="modal__fake seventh"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="modal__pointerWrapper">
+                                    <p class="modal__pointer">Количество</p>
+                                </div>
+                                <div class="modal__priceWrapper">
+                                    <p class="modal__priceText">Цена</p>
+                                    <p class="modal__price">78 990 ₽</p>
+                                </div>
+                            </div>
+                            <div class="modal__textareaWrapper">
+                                <p class="modal__textareaHeader">Комментарий к заказу</p>
+                                <textarea class="modal__textarea"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
