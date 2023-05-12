@@ -34,17 +34,7 @@
         </nav>
         <section class="category category--first" id="laptopAnc">
             <h3 class="category__title">Ноутбуки</h3>
-            <ul class="category__list" id="laptop">
-                <!-- <li class="category__item">
-                    <div class="category__img-wrapper">
-                        <img class="category__img" src="./img/laptop.png" alt="Картинка" />
-                    </div>
-                    <p class="category__date">Среда, 3 неделя Декабря 2021 года</p>
-                    <p class="category__cost">78 990 ₽</p>
-                    <p class="category__name">Apple MacBook Air 13</p>
-                    <button class="category__btn">Купить</button>
-                </li> -->
-            </ul>
+            <ul class="category__list" id="laptop"></ul>
         </section>
         <section class="category" id="phoneAnc">
             <h3 class="category__title">Телефоны</h3>
@@ -63,64 +53,20 @@
                 <div class="modal__wrapper">
                     <div class="modal__top">
                         <p class="modal__title">Товар добавлен в корзину</p>
-                        <img src="./img/cross24.svg" alt="Закрыть" class="modal__cross" />
+                        <img class="modal__cross" src="./img/cross24.svg" alt="Закрыть" id="cross" />
                     </div>
-                    <form class="modal__form" id="modal">
-                        <div class="modal__productWrapper">
-                            <div class="modal__productInfo">
-                                <div class="modal__imageWrapper">
-                                    <img src="./img/laptop.png" alt="Картинка товара" class="modal__img" />
+                    <form class="modal__form">
+                        <div class="modal__product-wrapper">
+                            <div class="modal__product-info" id="construct-modal"></div>
+                            <div class="modal__bottom">
+                                <div class="modal__textarea-wrapper">
+                                    <p class="modal__textarea-header">Комментарий к заказу</p>
+                                    <textarea class="modal__textarea"></textarea>
                                 </div>
-                                <div class="modal__productTextWrapper">
-                                    <p class="modal__productText">Наименование товара</p>
-                                    <p class="modal__productName">
-                                        13.3" Ноутбук Apple MacBook Air 13 2020 2560x1600
-                                    </p>
+                                <div class="modal__btn-wrapper">
+                                    <button class="modal__btn-close" id="close">Закрыть</button>
+                                    <button class="modal__btn-buy">Купить</button>
                                 </div>
-                                <div class="modal__inputWrapper">
-                                    <p class="modal__productText">Цвет</p>
-                                    <div class="modal__inputTable">
-                                        <label class="modal__inputStyle">
-                                            <input type="radio" class="modal__input" checked name="color" />
-                                            <span class="modal__fake first"></span>
-                                        </label>
-                                        <label class="modal__inputStyle">
-                                            <input type="radio" class="modal__input" name="color" />
-                                            <span class="modal__fake second"></span>
-                                        </label>
-                                        <label class="modal__inputStyle">
-                                            <input type="radio" class="modal__input" name="color" />
-                                            <span class="modal__fake third"></span>
-                                        </label>
-                                        <label class="modal__inputStyle">
-                                            <input type="radio" class="modal__input" name="color" />
-                                            <span class="modal__fake fourth"></span>
-                                        </label>
-                                        <label class="modal__inputStyle">
-                                            <input type="radio" class="modal__input" name="color" />
-                                            <span class="modal__fake fifth"></span>
-                                        </label>
-                                        <label class="modal__inputStyle">
-                                            <input type="radio" class="modal__input" name="color" />
-                                            <span class="modal__fake sixth"></span>
-                                        </label>
-                                        <label class="modal__inputStyle">
-                                            <input type="radio" class="modal__input" name="color" />
-                                            <span class="modal__fake seventh"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="modal__pointerWrapper">
-                                    <p class="modal__pointer">Количество</p>
-                                </div>
-                                <div class="modal__priceWrapper">
-                                    <p class="modal__priceText">Цена</p>
-                                    <p class="modal__price">78 990 ₽</p>
-                                </div>
-                            </div>
-                            <div class="modal__textareaWrapper">
-                                <p class="modal__textareaHeader">Комментарий к заказу</p>
-                                <textarea class="modal__textarea"></textarea>
                             </div>
                         </div>
                     </form>
