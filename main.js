@@ -3,6 +3,29 @@ const constructModal = document.querySelector('#construct-modal');
 const cross = document.querySelector('#cross');
 const close = document.querySelector('#close');
 
+const themeBtn = document.querySelector('.nav__theme');
+
+let darkTheme = false;
+
+themeBtn.addEventListener('click', (e) => {
+    const themeElements = document.querySelectorAll('.theme');
+    const cross = document.querySelector('.modal__cross');
+
+    if (e.currentTarget.src.includes('sun')) {
+        e.currentTarget.src = './img/moon24.svg';
+        cross.src = './img/cross-white24.svg';
+        darkTheme = true;
+    } else {
+        e.currentTarget.src = './img/sun24.svg';
+        cross.src = './img/cross24.svg';
+        darkTheme = false;
+    }
+
+    themeElements.forEach((el) => {
+        el.classList.toggle('theme-dark');
+    });
+});
+
 const modalClose = (e) => {
     e.preventDefault();
     if (e.currentTarget === e.target) {
@@ -68,12 +91,24 @@ const handleCounterClick = (e) => {
  * Функция для создания элемента с классом и текстом
  *
  * @param {keyof HTMLElementTagNameMap} element - HTML Элемент
- * @param {string} style - Класс
+ * @param {string | string[]} style - Класс
  * @param {string} [text] - Текст
+ * @param {boolean} [isDarkTheme] - Создавать стиль для темной темы
  */
-const createCustomElement = (element, style, text) => {
+const createCustomElement = (element, style, text, isDarkTheme) => {
     const el = document.createElement(`${element}`);
-    el.classList.add(`${style}`);
+
+    if (Array.isArray(style)) {
+        style.forEach((cls) => {
+            el.classList.add(`${cls}`);
+        });
+    } else {
+        el.classList.add(`${style}`);
+    }
+
+    if (isDarkTheme && darkTheme) {
+        el.classList.add('theme-dark');
+    }
 
     if (text) {
         el.innerText = text;
@@ -90,33 +125,39 @@ const createModalItem = (item) => {
     const textColor = createCustomElement('p', 'modal__product-text', 'Цвет');
     const textCounter = createCustomElement('p', 'modal__product-text', 'Количество');
     const textPrice = createCustomElement('p', 'modal__product-text', 'Цена');
-    const name = createCustomElement('p', 'modal__product-name');
+    const name = createCustomElement('p', 'modal__product-name', '', true);
     const inputWrapper = createCustomElement('div', 'modal__input-wrapper');
     const inputTable = createCustomElement('div', 'modal__input-table');
     const pointerWrapper = createCustomElement('div', 'modal__pointer-wrapper');
     const priceWrapper = createCustomElement('div', 'modal__price-wrapper');
 
     const counter = createCustomElement('div', 'counter');
-    const counterMinus = createCustomElement('button', 'counter__minus');
-    const counterPlus = createCustomElement('button', 'counter__plus');
+    const counterMinus = createCustomElement('button', 'counter__minus', '', true);
+    const counterPlus = createCustomElement('button', 'counter__plus', '', true);
     const counterMinusImg = createCustomElement('img', 'counter__minus-img');
     const counterPlusImg = createCustomElement('img', 'counter__plus-img');
-    const counterInput = createCustomElement('input', 'counter__input');
+    const counterInput = createCustomElement('input', 'counter__input', '', true);
 
-    const price = createCustomElement('p', 'modal__price');
+    const price = createCustomElement('p', 'modal__price', '', true);
 
     // Атрибуты из ITEM
     img.src = item.img;
     img.alt = 'Картинка товара';
     name.innerText = item.name;
     price.innerText = item.cost;
+
     // Атрибуты для COUNTER INPUT
     counterInput.disabled = true;
     counterInput.value = '1';
     counterInput.name = 'counter';
     counterInput.type = 'text';
-    counterMinusImg.src = './img/minus12.svg';
-    counterPlusImg.src = './img/plus12.svg';
+    if (darkTheme) {
+        counterMinusImg.src = './img/minus-white12.svg';
+        counterPlusImg.src = './img/plus-white12.svg';
+    } else {
+        counterMinusImg.src = './img/minus12.svg';
+        counterPlusImg.src = './img/plus12.svg';
+    }
     counterMinus.value = 'minus';
     counterPlus.value = 'plus';
 
@@ -173,8 +214,8 @@ const createCategoryItem = (item, parent) => {
     const imgWrapper = createCustomElement('div', 'category__img-wrapper');
     const img = createCustomElement('img', 'category__img');
     const date = createCustomElement('p', 'category__date');
-    const cost = createCustomElement('p', 'category__cost');
-    const name = createCustomElement('p', 'category__name');
+    const cost = createCustomElement('p', ['category__cost', 'theme']);
+    const name = createCustomElement('p', ['category__name', 'theme']);
     const btn = createCustomElement('button', 'category__btn');
 
     //Инициализация контента блоков

@@ -1,0 +1,61 @@
+body.theme-dark {
+    background-color: #23272f;
+}
+
+.nav__wrapper.theme-dark {
+    background-color: #363b44;
+}
+
+.nav__link.theme-dark {
+    color: #fff;
+}
+
+.category__title.theme-dark {
+    color: #fff;
+}
+
+.category__img-wrapper.theme-dark {
+    background-color: rgba(164, 168, 172, 0.1);
+}
+
+.category__cost.theme-dark {
+    color: #fff;
+}
+
+.category__name.theme-dark {
+    color: #fff;
+}
+
+.modal__wrapper.theme-dark {
+    background-color: #23272f;
+}
+
+.modal__title.theme-dark {
+    color: #fff;
+}
+
+.modal__product-name.theme-dark {
+    color: #fff;
+}
+
+.modal__price.theme-dark {
+    color: #fff;
+}
+
+.modal__textarea.theme-dark {
+    background-color: #363b44;
+    color: #fff;
+}
+
+.counter__minus.theme-dark {
+    background-color: #23272f;
+}
+
+.counter__plus.theme-dark {
+    background-color: #23272f;
+}
+
+.counter__input.theme-dark {
+    background-color: #23272f;
+    color: #fff;
+}
