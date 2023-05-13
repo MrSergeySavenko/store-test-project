@@ -386,6 +386,7 @@ body {
     cursor: pointer;
 }
 
+/* СЧЕТЧИК */
 .counter {
     border-radius: 16px;
     display: flex;

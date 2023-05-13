@@ -1,11 +1,18 @@
 const modal = document.querySelector('.modal');
 const constructModal = document.querySelector('#construct-modal');
 const cross = document.querySelector('#cross');
-const close = document.querySelector('#close');
+const closeBtn = document.querySelector('.modal__btn-close');
+const textarea = document.querySelector('.modal__textarea');
 
 const themeBtn = document.querySelector('.nav__theme');
 
 let darkTheme = false;
+
+let orderName = '';
+let sumPrice = 0;
+let orderPrice = 0;
+let orderColor = '';
+let orderCount = 1;
 
 themeBtn.addEventListener('click', (e) => {
     const themeElements = document.querySelectorAll('.theme');
@@ -27,13 +34,14 @@ themeBtn.addEventListener('click', (e) => {
 });
 
 const modalClose = (e) => {
-    e.preventDefault();
     if (e.currentTarget === e.target) {
         modal.classList.remove('modal--active');
 
         const nodes = [].slice.call(constructModal.children);
 
         nodes.forEach((node) => node.remove());
+
+        textarea.value = '';
     }
 };
 
@@ -45,7 +53,8 @@ cross.addEventListener('click', (e) => {
     modalClose(e);
 });
 
-close.addEventListener('click', (e) => {
+closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     modalClose(e);
 });
 
@@ -57,6 +66,11 @@ const handleModalOpen = (item) => {
 
 const getDayInfo = (date) => new Date(date).getFullYear();
 
+const getMoney = (money) =>
+    String(money)
+        .split(/(?=(?:\d{3})+(?!\d))/g)
+        .join(' ') + ' ₽';
+
 const handleRadioClick = (e) => {
     const radio = document.querySelectorAll('.modal__fake');
 
@@ -67,9 +81,10 @@ const handleRadioClick = (e) => {
     });
 
     e.target.classList.add('modal__fake--active');
+    orderColor = e.target.previousSibling.value;
 };
 
-const handleCounterClick = (e) => {
+const handleCounterClick = (e, price) => {
     e.preventDefault();
 
     const input = document.querySelector('.counter__input');
@@ -85,6 +100,9 @@ const handleCounterClick = (e) => {
             input.value = +input.value + 1;
             break;
     }
+    price.innerText = getMoney(orderPrice * +input.value);
+    orderCount = input.value;
+    sumPrice = orderPrice * +input.value;
 };
 
 /**
@@ -144,7 +162,9 @@ const createModalItem = (item) => {
     img.src = item.img;
     img.alt = 'Картинка товара';
     name.innerText = item.name;
-    price.innerText = item.cost;
+    orderPrice = item.cost;
+    sumPrice = item.cost;
+    price.innerText = getMoney(orderPrice);
 
     // Атрибуты для COUNTER INPUT
     counterInput.disabled = true;
@@ -161,6 +181,8 @@ const createModalItem = (item) => {
     counterMinus.value = 'minus';
     counterPlus.value = 'plus';
 
+    orderName = item.name;
+
     // Генерация
     constructModal.append(imgWrapper);
     imgWrapper.append(img);
@@ -171,12 +193,13 @@ const createModalItem = (item) => {
     inputWrapper.append(textColor);
     textColor.after(inputTable);
 
-    item.color.forEach((color, i) => {
+    Object.keys(item.color).forEach((color, i) => {
         const inputStyle = createCustomElement('label', 'modal__input-style');
         const radioInput = createCustomElement('input', 'modal__input');
         const radioStyle = createCustomElement('span', 'modal__fake');
         radioInput.type = 'radio';
         radioInput.name = 'color';
+        radioInput.value = color;
 
         radioStyle.addEventListener('click', handleRadioClick);
 
@@ -184,7 +207,7 @@ const createModalItem = (item) => {
             radioInput.checked = true;
             radioStyle.classList.add('modal__fake--active');
         }
-        radioStyle.style = `background-color: ${color}`;
+        radioStyle.style = `background-color: ${item.color[color]}`;
 
         inputTable.append(inputStyle);
         inputStyle.append(radioInput);
@@ -204,8 +227,8 @@ const createModalItem = (item) => {
     priceWrapper.append(textPrice);
     priceWrapper.append(price);
 
-    counterMinus.addEventListener('click', handleCounterClick);
-    counterPlus.addEventListener('click', handleCounterClick);
+    counterMinus.addEventListener('click', (e) => handleCounterClick(e, price));
+    counterPlus.addEventListener('click', (e) => handleCounterClick(e, price));
 };
 
 const createCategoryItem = (item, parent) => {
@@ -221,7 +244,7 @@ const createCategoryItem = (item, parent) => {
     //Инициализация контента блоков
     date.innerText = getDayInfo(item.date);
     name.innerText = item.name;
-    cost.innerText = item.cost;
+    cost.innerText = getMoney(item.cost);
     btn.innerText = 'Купить';
     img.src = item.img;
     img.alt = 'Картинка товара';
@@ -244,4 +267,26 @@ for (let key in initialData) {
     initialData[key].forEach((obj) => {
         createCategoryItem(obj, parent);
     });
+}
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', submitForm, true);
+
+function submitForm(e) {
+    e.preventDefault();
+
+    const message = textarea.value;
+
+    alert(
+        `Мы приняли ваш заказ, спасибо 
+        Название: ${orderName}
+        Цвет: ${orderColor}
+        Количество: ${orderCount}
+        Цена (шт.): ${getMoney(orderPrice)}
+        Общая цена: ${getMoney(sumPrice)}
+        ${message && `Комментарий: ${message}`}
+        `
+    );
+    modalClose(e);
 }

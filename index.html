@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +12,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet" />
-        <title>Store TestProject</title>
+        <title>Store Test Project</title>
     </head>
     <body class="theme">
         <nav class="nav">
@@ -57,7 +57,7 @@
                         <p class="modal__title theme">Товар добавлен в корзину</p>
                         <img class="modal__cross" src="./img/cross24.svg" alt="Закрыть" id="cross" />
                     </div>
-                    <form class="modal__form">
+                    <form class="modal__form" method="post">
                         <div class="modal__product-wrapper">
                             <div class="modal__product-info" id="construct-modal"></div>
                             <div class="modal__bottom">
@@ -66,8 +66,8 @@
                                     <textarea class="modal__textarea theme"></textarea>
                                 </div>
                                 <div class="modal__btn-wrapper">
-                                    <button class="modal__btn-close" id="close">Закрыть</button>
-                                    <button class="modal__btn-buy">Купить</button>
+                                    <button class="modal__btn-close">Закрыть</button>
+                                    <input class="modal__btn-buy" type="submit" value="Купить" />
                                 </div>
                             </div>
                         </div>
