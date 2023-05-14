@@ -3,6 +3,11 @@ body {
     position: relative;
 }
 
+.main-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
 /* НАВБАР */
 .nav {
     position: fixed;
@@ -442,4 +447,19 @@ body {
     height: 12px;
     margin-top: 2px;
     margin-right: 2px;
+}
+
+@media (max-width: 1280px) {
+    .main-wrapper {
+        margin-left: 40px;
+        margin-right: 10px;
+    }
+
+    .nav__wrapper {
+        width: 696px;
+    }
+
+    .modal__window {
+        max-width: 1200px;
+    }
 }
