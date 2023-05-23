@@ -4,6 +4,10 @@ const cross = document.querySelector('#cross');
 const closeBtn = document.querySelector('.modal__btn-close');
 const textarea = document.querySelector('.modal__textarea');
 const themeBtn = document.querySelector('.nav__theme');
+const navOpen = document.querySelector('.nav__span-wrapper');
+const nav = document.querySelector('.nav__ul-wrapper');
+const navCross = document.querySelector('.nav__cross');
+const btnUp = document.querySelector('.up__wrapper');
 
 // Тема
 let isDarkTheme = false;
@@ -44,6 +48,32 @@ const handleModalClose = (e) => {
 
         textarea.value = '';
     }
+};
+
+/**
+ * Эвент открытия/закрытия nav-bar
+ * @param {event} e - Эвент
+ */
+const handleNavBar = (e) => {
+    navOpen.classList.toggle('nav--active');
+    themeBtn.classList.toggle('nav--active');
+    nav.classList.toggle('nav--active');
+};
+
+/**
+ * Эвент скрытия btnUp
+ * @param {event} e - Эвент
+ */
+const showBtnUp = (e) => {
+    btnUp.classList.toggle('up__wrapper--active');
+};
+
+/**
+ * Эвент раскрытия btnUp
+ * @param {event} e - Эвент
+ */
+const hideBtnUp = (e) => {
+    btn.classList.toggle('up__wrapper--active');
 };
 
 /**
@@ -166,6 +196,8 @@ const createModalItem = (item) => {
 
     // Инициализация блоков
     const imgWrapper = createCustomElement('div', ['modal__img-wrapper']);
+    const charWrapper = createCustomElement('div', ['modal__char-wrapper']);
+    const amountWrapper = createCustomElement('div', ['modal__amount-wrapper']);
     const img = createCustomElement('img', ['modal__img'], { src: item.img, alt: 'Картинка товара' });
     const textWrapper = createCustomElement('div', ['modal__product-text-wrapper']);
     const textName = createCustomElement('p', ['modal__product-text'], { text: 'Наименование товара' });
@@ -200,7 +232,7 @@ const createModalItem = (item) => {
     counterPlus.addEventListener('click', (e) => handleCounterClick(e, price));
 
     // Генерация в HTML
-    constructModal.append(imgWrapper, textWrapper, inputWrapper, pointerWrapper, priceWrapper);
+    constructModal.append(imgWrapper, charWrapper, amountWrapper);
     imgWrapper.append(img);
 
     textWrapper.append(textName, name);
@@ -210,12 +242,61 @@ const createModalItem = (item) => {
         inputTable.append(...color);
     });
 
+    charWrapper.append(textWrapper, inputWrapper);
+
     pointerWrapper.append(textCounter, counter);
     counter.append(counterMinus, counterInput, counterPlus);
     counterMinus.append(counterMinusImg);
     counterPlus.append(counterPlusImg);
 
     priceWrapper.append(textPrice, price);
+
+    amountWrapper.append(pointerWrapper, priceWrapper);
+};
+
+/**
+ * Формула выведения человекочитаемой даты
+ * @param {{date: string}} date - дата обьекта
+ */
+const getActualData = (date) => {
+    const dateNew = new Date(date);
+    console.log(dateNew);
+    const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четвег', 'Пятница', 'Суббота'];
+    const month = [
+        'Января',
+        'Февраля',
+        'Марта',
+        'Апреля',
+        'Мая',
+        'Июня',
+        'Июля',
+        'Августа',
+        'Сентября',
+        'Октября',
+        'Ноября',
+        'Декабря',
+    ];
+    let week = 0;
+    const actualDay = days[dateNew.getDay()];
+    const actualMonth = month[dateNew.getMonth()];
+    const actualYear = dateNew.getFullYear();
+
+    const dayNumber = Number(dateNew.getDate());
+    dayNumber <= 7
+        ? (week = 1)
+        : dayNumber <= 14
+        ? (week = 2)
+        : dayNumber <= 21
+        ? (week = 3)
+        : dayNumber <= 28
+        ? (week = 4)
+        : dayNumber <= 31
+        ? (week = 5)
+        : (week = 1);
+
+    const actualDate = `${actualDay}, ${week} неделя ${actualMonth} ${actualYear} года`;
+
+    return actualDate;
 };
 
 /**
@@ -228,7 +309,7 @@ const createCategoryItem = (item, parent) => {
     const categoryItem = createCustomElement('li', ['category__item']);
     const imgWrapper = createCustomElement('div', ['category__img-wrapper']);
     const img = createCustomElement('img', ['category__img'], { src: item.img, alt: 'Картинка товара' });
-    const date = createCustomElement('p', ['category__date'], { text: getDayInfo(item.date) });
+    const date = createCustomElement('p', ['category__date'], { text: getActualData(item.date) });
     const cost = createCustomElement('p', ['category__cost', 'theme'], { text: getMoney(item.cost) });
     const name = createCustomElement('p', ['category__name', 'theme'], { text: item.name });
     const btn = createCustomElement('button', ['category__btn'], { text: 'Купить' });
@@ -311,6 +392,29 @@ const initApp = (data) => {
         e.preventDefault();
         handleModalClose(e);
     });
+    navOpen.addEventListener('click', (e) => {
+        handleNavBar(e);
+    });
+    navCross.addEventListener('click', (e) => {
+        handleNavBar(e);
+    });
+    const btnUp = {
+        el: document.querySelector('.up__wrapper'),
+        show() {
+            this.el.classList.remove('up__wrapper--active');
+        },
+        hide() {
+            this.el.classList.add('up__wrapper--active');
+        },
+        addEventListener() {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+                scrollY > 400 ? this.show() : this.hide();
+            });
+        },
+    };
+
+    btnUp.addEventListener();
 
     //Рендер формы
     initFormAction();

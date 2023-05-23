@@ -59,3 +59,7 @@ body.theme-dark {
     background-color: #23272f;
     color: #fff;
 }
+
+.footer__href.theme-dark {
+    color: #fff;
+}
